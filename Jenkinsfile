@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        go 'go-1.13'
+        go 'go-1.13.4'
     }
     environment {
         GO111MODULE = 'on'
@@ -13,8 +13,6 @@ pipeline {
             }
         }
         stage('Test') {
-            environment {
-            }
             steps {
                 sh 'go test ./...'
             }
