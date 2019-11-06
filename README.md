@@ -1,7 +1,7 @@
 # Go module `httputils`
 
 Module `github.com/maffeis/httputils` provides utility functions for developing HTTP server applications in go.
-The following example sets up a go server which listens on port 8080 for HTTP requests and on 8443 for HTTPS requests. The HTTPS socket is secured with a certificate and with a private key specified to the `ListenHTTPS` function as file paths. A REST endpoint `GET /m/{msg}` is exposed, which returns a JSON response document.
+The following example sets up a go server which listens on port 8080 for HTTP requests and on 8443 for HTTPS requests. The HTTPS socket is secured with a certificate and with a private key specified to the `ListenHTTPS` function as file paths. A REST endpoint `GET /m/{msg}` is exposed, which returns a JSON response document. You can try the REST endpoint from your browser by opening the URL http://localhost:8080/m/test123
 
 ```go
 import (
