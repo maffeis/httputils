@@ -14,8 +14,8 @@ import (
 )
 
 func main() {
-    // channel for synchronizing with the HTTP/HTTPS event loop:
-    errorchan := make(chan error)
+	// channel for synchronizing with the HTTP/HTTPS event loop:
+	errorchan := make(chan error)
 
 	log.Infof("opening port 8080/8443")
 
@@ -24,7 +24,7 @@ func main() {
 	httputils.ListenHTTP("127.0.0.1:8080", 30, 30, errorchan)
 	httputils.ListenHTTPS("127.0.0.1:8443", 30, 30, "ssl/gosrv.cert", "ssl/gosrv.key", errorchan)
 
-    // wait for the HTTP/HTTPS event loop to terminate:
+	// wait for the HTTP/HTTPS event loop to terminate:
 	err := <-errorchan
 	if err != nil {
 		log.Fatalf("ListenHTTP/S failed: %s", err.Error())
@@ -32,7 +32,7 @@ func main() {
 		log.Infof("HTTP/S terminated")
 	}
 
-    // wait for the HTTP/HTTPS event loop to terminate:
+	// wait for the HTTP/HTTPS event loop to terminate:
 	err = <-errorchan
 	if err != nil {
 		log.Fatalf("ListenHTTP/S failed: %s", err.Error())
