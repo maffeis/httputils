@@ -1,7 +1,7 @@
 # Go module `httputils`
 
 Module `github.com/maffeis/httputils` provides utility functions for developing HTTP server applications in go.
-The following example sets up a go server which listens on port 8080 for HTTP requests and on 8443 for HTTPS requests. The HTTPS socket is secured with a certificate and with a private key that are specified to the `ListenHTTPS` function as file paths. A REST endpoint `GET /m/{msg}` is exposed, which returns a JSON response document.
+The following example sets up a go server which listens on port 8080 for HTTP requests and on 8443 for HTTPS requests. The HTTPS socket is secured with a certificate and with a private key specified to the `ListenHTTPS` function as file paths. A REST endpoint `GET /m/{msg}` is exposed, which returns a JSON response document. You can try the REST endpoint from your browser by opening the URL http://localhost:8080/m/test123
 
 ```go
 import (
@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-    // channel for synchronizing with the HTTP/HTTPS event loop:
+	// channel for synchronizing with the HTTP/HTTPS event loop:
 	errorchan := make(chan error)
 
 	log.Infof("opening port 8080/8443")
@@ -24,7 +24,7 @@ func main() {
 	httputils.ListenHTTP("127.0.0.1:8080", 30, 30, errorchan)
 	httputils.ListenHTTPS("127.0.0.1:8443", 30, 30, "ssl/gosrv.cert", "ssl/gosrv.key", errorchan)
 
-    // wait for the HTTP/HTTPS event loop to terminate:
+	// wait for the HTTP/HTTPS event loop to terminate:
 	err := <-errorchan
 	if err != nil {
 		log.Fatalf("ListenHTTP/S failed: %s", err.Error())
@@ -32,7 +32,7 @@ func main() {
 		log.Infof("HTTP/S terminated")
 	}
 
-    // wait for the HTTP/HTTPS event loop to terminate:
+	// wait for the HTTP/HTTPS event loop to terminate:
 	err = <-errorchan
 	if err != nil {
 		log.Fatalf("ListenHTTP/S failed: %s", err.Error())
