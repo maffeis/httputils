@@ -25,7 +25,7 @@ pipeline {
             steps {
                 //sh 'curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | bash -s -- -b . v1.21.0'
                 //sh 'echo hello world'
-                sh '/mnt/jenkins/tools/go/gogolangci-lint run'
+                sh '/mnt/jenkins/tools/go/golangci-lint run'
             }
         }
     }
