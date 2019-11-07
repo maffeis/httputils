@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Test') {
             environment {
-                CODECOV_TOKEN='0e186b79-36b0-4f39-bf7f-e1a0df8e60ea'
+                CODECOV_TOKEN = credentials('codecov_token_maffeis')
             }
             steps {
                 sh 'go test ./... -coverprofile=coverage.txt'
