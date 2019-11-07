@@ -24,8 +24,8 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 sh 'curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | bash -s -- -b . v1.21.0'
-                //sh './golangci-lint run -v'
                 sh 'echo hello world'
+                sh './golangci-lint run'
             }
         }
     }
