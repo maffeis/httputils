@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Test') {
             environment {
-                CODECOV_TOKEN = credentials('codecov_token_maffeis')
+                CODECOV_TOKEN = credentials('codecov_token')
             }
             steps {
                 sh 'go test ./... -coverprofile=coverage.txt'
@@ -29,6 +29,17 @@ pipeline {
                 // of an obsolete /tmp/golangci-lint.lock
                 
                 sh '/mnt/jenkins/tools/go/golangci-lint run'
+            }
+        }
+        stage('Release') {
+            when {
+                buildingTag()
+            }
+            environment {
+                GITHUB_TOKEN = credentials('github_token')
+            }
+            steps {
+                sh 'curl -sL https://git.io/goreleaser | bash'
             }
         }
     }
