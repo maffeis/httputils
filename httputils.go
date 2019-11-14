@@ -1,12 +1,13 @@
 package httputils
 
 import (
-	"log"
 	"net/http"
 	"time"
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+
+	log "github.com/sirupsen/logrus"
 )
 
 var router = mux.NewRouter()
@@ -33,8 +34,6 @@ func ListenHTTP(addr string, writeTimeoutSec int, readTimeoutSec int, errorchan 
 	srvHTTP.Addr = addr
 	srvHTTP.WriteTimeout = time.Second * time.Duration(writeTimeoutSec)
 	srvHTTP.ReadTimeout = time.Second * time.Duration(readTimeoutSec)
-
-	log.Print("TEST") // hack
 
 	go func() {
 		error := srvHTTP.ListenAndServe()
