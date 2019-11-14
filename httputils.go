@@ -67,12 +67,12 @@ func ListenHTTPS(addr string, writeTimeoutSec int, readTimeoutSec int, sslCertFi
 	}()
 }
 
-// CloseHTTP ls the HTTP service
+// CloseHTTP closes the HTTP service
 func CloseHTTP() {
 	srvHTTP.Close()
 }
 
-// CloseHTTPS ls the HTTP service
+// CloseHTTPS closes the HTTPS service
 func CloseHTTPS() {
 	srvHTTPS.Close()
 }
